@@ -1,0 +1,18 @@
+version: '2'
+services:
+  jenkins:
+    container_name: jenkins
+    privileged: true
+    image: jenkins/jenkins:2.157
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+    ports:
+      - "8081:8080"
+  nexus:
+    container_name: nexus
+    privileged: true
+    image: sonatype/nexus3:3.14.0
+    volumes:
+      - ./nexus-data:/nexus-data
+    ports:
+      - "8082:8081"
