@@ -16,3 +16,14 @@ services:
       - ./nexus-data:/nexus-data
     ports:
       - "8082:8081"
+  weblogic:
+    container_name: weblogic
+    privileged: true
+    image: store/oracle/weblogic:12.2.1.3-dev
+    volumes:
+      - ./oracle_conf:/u01/oracle/properties
+    ports:
+      - "7001:7001"
+      - "9002:9002"
+    environment:
+      - ADMINISTRATION_PORT_ENABLED=false
